@@ -37,49 +37,31 @@ if (subnetworks != NULL) {
 free(network);
 ```
 Output:
-> **Parent network:**
-> 
-> **192.168.0.0/24**
-> 
-> **binary mask: 11111111.11111111.11111111.00000000**
-> 
-> **decimal mask: 255.255.255.0**
-> 
-> **192.168.0.1**
-> 
-> **...**
-> 
-> **192.168.0.254**
-> 
-> 
-> **Subnetwork 1:**
-> 
-> **192.168.0.0/25**
-> 
-> **binary mask: 11111111.11111111.11111111.10000000**
-> 
-> **decimal mask: 255.255.255.128**
-> 
-> **192.168.0.1**
-> 
-> **...**
-> 
-> **192.168.0.126**
-> 
-> 
-> **Subnetwork 2:**
-> 
-> **192.168.0.128/26**
-> 
-> **binary mask: 11111111.11111111.11111111.11000000**
-> 
-> **decimal mask: 255.255.255.192**
-> 
-> **192.168.0.129**
-> 
-> **...**
-> 
-> **192.168.0.190**
+```
+Parent network:
+192.168.0.0/24
+binary mask: 11111111.11111111.11111111.00000000
+decimal mask: 255.255.255.0
+192.168.0.1
+...
+192.168.0.254
+
+Subnetwork 1:
+192.168.0.0/25
+binary mask: 11111111.11111111.11111111.10000000
+decimal mask: 255.255.255.128
+192.168.0.1
+...
+192.168.0.126
+
+Subnetwork 2:
+192.168.0.128/26
+binary mask: 11111111.11111111.11111111.11000000
+decimal mask: 255.255.255.192
+192.168.0.129
+...
+192.168.0.190
+```
 
 ## Installation
 Open the .xcodeproj file in Xcode. Build the project. It will copy the headers to /usr/local/include and install the library in /usr/local/lib.
