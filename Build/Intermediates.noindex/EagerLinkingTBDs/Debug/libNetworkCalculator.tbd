@@ -1,0 +1,39 @@
+{
+  "main_library": {
+    "exported_symbols": [
+      {
+        "text": {
+          "global": [
+            "_CreateNetworkDescription",
+            "_IPAddressFromString",
+            "_firstIPAddress",
+            "_stringIPAddress",
+            "_CreateSubnetworks",
+            "_CreateNetwork",
+            "_lastIPAddress",
+            "_binaryIPAddress"
+          ]
+        }
+      }
+    ],
+    "flags": [
+      {
+        "attributes": [
+          "not_app_extension_safe"
+        ]
+      }
+    ],
+    "install_names": [
+      {
+        "name": "/usr/local/lib/libNetworkCalculator.dylib"
+      }
+    ],
+    "target_info": [
+      {
+        "min_deployment": "14.2",
+        "target": "x86_64-macos"
+      }
+    ]
+  },
+  "tapi_tbd_version": 5
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ascii">
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>masterTOC.html</title>
+                <link rel="stylesheet" href="http://gregfranko.com/jquery.tocify.js/css/bootstrap.css">
+                <link rel="stylesheet" href="http://gregfranko.com/jquery.tocify.js/css/jquery.ui.all.css">
+                <link href="http://gregfranko.com/jquery.tocify.js/css/jquery.tocify.css" rel="stylesheet">
+                <link href="http://gregfranko.com/jquery.tocify.js/css/prettify.css" type="text/css" rel="stylesheet">
+                <script src="http://gregfranko.com/jquery.tocify.js/js/jquery-1.8.3.min.js"></script>
+                <script src="http://gregfranko.com/jquery.tocify.js/js/jquery-ui-1.9.1.custom.min.js"></script>
+                <script src="http://gregfranko.com/jquery.tocify.js/js/bootstrap.js"></script>
+                <script src="http://gregfranko.com/jquery.tocify.js/js/jquery.tocify.js"></script>
+                <script src="http://gregfranko.com/jquery.tocify.js/js/prettify.js"></script>
+                <script src="http://gregfranko.com/jquery.tocify.js/js/githubrepo.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        var currentTitle = $('title').text();
+                        var newTitle = currentTitle.substring(0, currentTitle.indexOf('.html'));
+                        $('title').text(newTitle);
+                        
+                        $('invisible blockquote').each(function() {
+                            $(this).replaceWith($(this).contents());
+                        });
+                        
+                        $('invisible br').remove();
+                        
+                        $('invisible a').each(function() {
+                            $(this).wrap('<h2>');
+                        });
+                        
+                        $("toc").tocify({context: "invisible", showAndHideOnScroll: false, highlightOnScroll: false, history: false, highlightDefault: false});
+                        
+                        const tocItems = $('.tocify-item').filter(function() {
+                            return $(this).parent().hasClass('tocify-subheader');
+                        });
+
+                        $('invisible h2 a').each(function(index) {
+                            const href = $(this).attr('href');
+                            tocItems.eq(index).find('a').attr('href', href);
+                        });
+                    });
+                </script>
+            </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3">
+                    <toc class="tocify"></toc>
+                    <invisible style="display: none;">
+                        
+                        <h1>Sections</h1>
+                        <blockquote class="groupindent">
+<a name="group___header_CR" href="subnetworks_h/index.html">Creating subnetworks</a><br><br>
+<a name="group___header_DA" href="datatypes_h/index.html">Data types</a><br><br>
+<a name="group___header_RE" href="representation_h/index.html">Repserenting IP addresses</a><br><br>
+<a name="group___header_WO" href="ipaddress_h/index.html">Working with IP addresses</a><br><br>
+</blockquote>
+
+                        
+                        
+                        
+                        <h1>Functions</h1>
+                        <blockquote class="groupindent">
+<a logicalpath="//apple_ref/c/func/binaryIPAddress" name="group___function_BI" retarget="yes" href="representation_h/index.html#//apple_ref/c/func/binaryIPAddress">binaryIPAddress</a><br><br>
+<a logicalpath="//apple_ref/c/func/CreateNetwork" name="group___function_CR" retarget="yes" href="subnetworks_h/index.html#//apple_ref/c/func/CreateNetwork">CreateNetwork</a><br><br>
+<a logicalpath="//apple_ref/c/func/CreateNetworkDescription" retarget="yes" href="subnetworks_h/index.html#//apple_ref/c/func/CreateNetworkDescription">CreateNetworkDescription</a><br><br>
+<a logicalpath="//apple_ref/c/func/CreateSubnetworks" retarget="yes" href="subnetworks_h/index.html#//apple_ref/c/func/CreateSubnetworks">CreateSubnetworks</a><br><br>
+<a logicalpath="//apple_ref/c/func/firstIPAddress" name="group___function_FI" retarget="yes" href="ipaddress_h/index.html#//apple_ref/c/func/firstIPAddress">firstIPAddress</a><br><br>
+<a logicalpath="//apple_ref/c/func/IPAddressFromString" name="group___function_IP" retarget="yes" href="ipaddress_h/index.html#//apple_ref/c/func/IPAddressFromString">IPAddressFromString</a><br><br>
+<a logicalpath="//apple_ref/c/func/lastIPAddress" name="group___function_LA" retarget="yes" href="ipaddress_h/index.html#//apple_ref/c/func/lastIPAddress">lastIPAddress</a><br><br>
+<a logicalpath="//apple_ref/c/func/stringIPAddress" name="group___function_ST" retarget="yes" href="representation_h/index.html#//apple_ref/c/func/stringIPAddress">stringIPAddress</a><br><br>
+</blockquote>
+
+                        
+                        
+                        
+                        
+                        
+                        <h1>Data types</h1>
+                        <blockquote class="groupindent">
+<a logicalpath="//apple_ref/c/tdef/IPAddress" name="group___type_IP" retarget="yes" href="datatypes_h/index.html#//apple_ref/c/tdef/IPAddress">IPAddress</a><br><br>
+<a logicalpath="//apple_ref/c/tdef/Network" name="group___type_NE" retarget="yes" href="datatypes_h/index.html#//apple_ref/c/tdef/Network">Network</a><br><br>
+</blockquote>
+
+                        
+                    </invisible>
+                </div>
+                <div class="span9">
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
