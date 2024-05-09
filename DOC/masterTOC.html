@@ -23,35 +23,96 @@
                         var newTitle = currentTitle.substring(0, currentTitle.indexOf('.html'));
                         $('title').text(newTitle);
                         
+                        
                         $('invisible blockquote').each(function() {
                             $(this).replaceWith($(this).contents());
                         });
-                        
                         $('invisible br').remove();
-                        
                         $('invisible a').each(function() {
                             $(this).wrap('<h2>');
                         });
                         
+                        
                         $("toc").tocify({context: "invisible", showAndHideOnScroll: false, highlightOnScroll: false, history: false, highlightDefault: false});
+                        
                         
                         const tocItems = $('.tocify-item').filter(function() {
                             return $(this).parent().hasClass('tocify-subheader');
                         });
-
                         $('invisible h2 a').each(function(index) {
                             const href = $(this).attr('href');
                             tocItems.eq(index).find('a').attr('href', href);
                         });
+                        
+                        
+                        const headers = $('.tocify-item').filter(function() {
+                            return $(this).parent().hasClass('tocify-header');
+                        }).slice(1);
+                        headers.each(function() {
+                            const tri = $('<span>').html('&#x25BA');
+                            const anchor = $(this).find('a');
+                            anchor.prepend(tri);
+                        });
+                        
+                        
+                        function activate(mutations, observer) {
+                            mutations.forEach(mutation => {
+                                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                                    const header = $(mutation.target);
+                                    if (header.hasClass('active')) {
+                                        header.find('a').find('span').html('&#x25BC;');
+                                    } else {
+                                        header.find('a').find('span').html('&#x25BA;');
+                                    }
+                                }
+                            });
+                        }
+                        const config = { attributes: true, attributeFilter: ['class'] };
+                        const observer = new MutationObserver(activate);
+                        headers.each(function() {
+                            observer.observe($(this)[0], config);
+                        });
                     });
                 </script>
+                <style>
+                    [id^="tocify-header"] {
+                        font-weight: bold;
+                    }
+                    .tocify-subheader .tocify-item {
+                        font-weight: normal;
+                    }
+                    .tocify-item a {
+                        color: #000000;
+                    }
+                    .nav-list .active a, .nav-list .active a:hover {
+                        background-color: #ffffff;
+                        color: #000000;
+                    }
+                    .nav li a:hover {
+                        background-color: #ffffff;
+                    }
+                    .tocify-subheader .tocify-item a:hover {
+                        text-decoration: underline;
+                    }
+                    .tocify-item a span {
+                        margin-right: 10px;
+                    }
+                    #tocify-header0 {
+                        margin-bottom: 30px;
+                    }
+                    #tocify-header0 .tocify-item a {
+                        text-align: center;
+                        font-size: 18px;
+                    }
+                </style>
             </head>
-    <body>
+    <body style="font-family: lucida grande, geneva, helvetica, arial, sans-serif;">
         <div class="container-fluid">
             <div class="row-fluid">
                 <div class="span3">
                     <toc class="tocify"></toc>
                     <invisible style="display: none;">
+                        <h1>Table of Contents</h1>
                         
                         <h1>Sections</h1>
                         <blockquote class="groupindent">
@@ -96,68 +157,69 @@
                     <p>NetworkCalculator is a dynamic library that manages available host space in IP addresses and calculates subnetworks. The idea came from a task from one exam in the first course of the cisco CCNA course series.</p>
                     <h2 id="example">Example</h2>
                     <p>code:</p>
-                    <pre><code class="lang-C"><span class="hljs-comment">// Create network with 24-bit mask</span>
-                    Network *network = CreateNetwork(<span class="hljs-string">"192.168.0.0"</span>, <span class="hljs-number">24</span>);
-                    <span class="hljs-keyword">if</span> (network == <span class="hljs-literal">NULL</span>) {
-                        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-                    }
+                    <pre style="font-family: Courier, Consolas, monospace; background-color: #f1f5f9; color: #666"><code class="lang-C" style="font-family: Courier, Consolas, monospace; background-color: #f1f5f9; color: #666">
+<span class="hljs-comment">// Create network with 24-bit mask</span>
+Network *network = CreateNetwork(<span class="hljs-string">"192.168.0.0"</span>, <span class="hljs-number">24</span>);
+<span class="hljs-keyword">if</span> (network == <span class="hljs-literal">NULL</span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+}
 
-                    <span class="hljs-keyword">char</span> *description = CreateNetworkDescription(network);
-                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Parent network:\n%s\n\n"</span>, description);
-                    <span class="hljs-comment">// Free strings returned by the library's functions</span>
-                    <span class="hljs-built_in">free</span>(description);
+<span class="hljs-keyword">char</span> *description = CreateNetworkDescription(network);
+<span class="hljs-built_in">printf</span>(<span class="hljs-string">"Parent network:\n%s\n\n"</span>, description);
+<span class="hljs-comment">// Free strings returned by the library's functions</span>
+<span class="hljs-built_in">free</span>(description);
 
-                    <span class="hljs-comment">// The next block of code demonstrates how to use</span>
-                    <span class="hljs-comment">// the library's functionality to split the network</span>
-                    <span class="hljs-comment">// into two subnetworks with 100 and 50 hosts correspondingly.</span>
-                    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> hosts[] = {<span class="hljs-number">100</span>, <span class="hljs-number">50</span>, <span class="hljs-number">0</span>};
-                    <span class="hljs-keyword">size_t</span> count = <span class="hljs-keyword">sizeof</span>(hosts) / <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>) - <span class="hljs-number">1</span>;
-                    Network **subnetworks = CreateSubnetworks(network, hosts);
-                    <span class="hljs-keyword">if</span> (subnetworks != <span class="hljs-literal">NULL</span>) {
-                        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; count; i++) {
-                            Network *subnetwork = subnetworks[i];
-                            description = CreateNetworkDescription(subnetwork);
-                            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Subnetwork %d:\n%s\n\n"</span>, i + <span class="hljs-number">1</span>, description);
-                            <span class="hljs-built_in">free</span>(description);
-                        }
-                        <span class="hljs-built_in">free</span>(subnetworks);
-                    }
+<span class="hljs-comment">// The next block of code demonstrates how to use</span>
+<span class="hljs-comment">// the library's functionality to split the network</span>
+<span class="hljs-comment">// into two subnetworks with 100 and 50 hosts correspondingly.</span>
+<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> hosts[] = {<span class="hljs-number">100</span>, <span class="hljs-number">50</span>, <span class="hljs-number">0</span>};
+<span class="hljs-keyword">size_t</span> count = <span class="hljs-keyword">sizeof</span>(hosts) / <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>) - <span class="hljs-number">1</span>;
+Network **subnetworks = CreateSubnetworks(network, hosts);
+<span class="hljs-keyword">if</span> (subnetworks != <span class="hljs-literal">NULL</span>) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; count; i++) {
+        Network *subnetwork = subnetworks[i];
+        description = CreateNetworkDescription(subnetwork);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Subnetwork %d:\n%s\n\n"</span>, i + <span class="hljs-number">1</span>, description);
+        <span class="hljs-built_in">free</span>(description);
+    }
+    <span class="hljs-built_in">free</span>(subnetworks);
+}
 
-                    <span class="hljs-comment">// Free all networks</span>
-                    <span class="hljs-built_in">free</span>(network);
+<span class="hljs-comment">// Free all networks</span>
+<span class="hljs-built_in">free</span>(network);
                     </code></pre>
                     <p>Output:</p>
-                    <pre><code>Parent network:
-                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.0</span>/<span class="hljs-number">24</span>
-                    binary mask: <span class="hljs-number">11111111.11111111</span><span class="hljs-meta">.11111111</span><span class="hljs-meta">.00000000</span>
-                    decimal mask: <span class="hljs-number">255.255</span><span class="hljs-meta">.255</span><span class="hljs-meta">.0</span>
-                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.1</span>
-                    ...
-                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.254</span>
+                    <pre style="font-family: Courier, Consolas, monospace; background-color: #f1f5f9; color: #666"><code style="font-family: Courier, Consolas, monospace; background-color: #f1f5f9; color: #666">
+Parent network:
+<span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.0</span>/<span class="hljs-number">24</span>
+binary mask: <span class="hljs-number">11111111.11111111</span><span class="hljs-meta">.11111111</span><span class="hljs-meta">.00000000</span>
+decimal mask: <span class="hljs-number">255.255</span><span class="hljs-meta">.255</span><span class="hljs-meta">.0</span>
+<span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.1</span>
+...
+<span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.254</span>
 
-                    Subnetwork <span class="hljs-number">1</span>:
-                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.0</span>/<span class="hljs-number">25</span>
-                    binary mask: <span class="hljs-number">11111111.11111111</span><span class="hljs-meta">.11111111</span><span class="hljs-meta">.10000000</span>
-                    decimal mask: <span class="hljs-number">255.255</span><span class="hljs-meta">.255</span><span class="hljs-meta">.128</span>
-                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.1</span>
-                    ...
-                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.126</span>
+Subnetwork <span class="hljs-number">1</span>:
+<span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.0</span>/<span class="hljs-number">25</span>
+binary mask: <span class="hljs-number">11111111.11111111</span><span class="hljs-meta">.11111111</span><span class="hljs-meta">.10000000</span>
+decimal mask: <span class="hljs-number">255.255</span><span class="hljs-meta">.255</span><span class="hljs-meta">.128</span>
+<span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.1</span>
+...
+<span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.126</span>
 
-                    Subnetwork <span class="hljs-number">2</span>:
-                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.128</span>/<span class="hljs-number">26</span>
-                    binary mask: <span class="hljs-number">11111111.11111111</span><span class="hljs-meta">.11111111</span><span class="hljs-meta">.11000000</span>
-                    decimal mask: <span class="hljs-number">255.255</span><span class="hljs-meta">.255</span><span class="hljs-meta">.192</span>
-                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.129</span>
-                    ...
-                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.190</span>
-                    </code></pre>
-<h2 id="installation">Installation</h2>
+Subnetwork <span class="hljs-number">2</span>:
+<span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.128</span>/<span class="hljs-number">26</span>
+binary mask: <span class="hljs-number">11111111.11111111</span><span class="hljs-meta">.11111111</span><span class="hljs-meta">.11000000</span>
+decimal mask: <span class="hljs-number">255.255</span><span class="hljs-meta">.255</span><span class="hljs-meta">.192</span>
+<span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.129</span>
+...
+<span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.190</span>
+                    </code></pre><h2 id="installation">Installation</h2>
                     <p>Open the .xcodeproj file in Xcode. Build the project. It will copy the headers to /usr/local/include and install the library in /usr/local/lib.</p>
                     <h2 id="linking-with-existing-projects">Linking with existing projects</h2>
-                    <p>Add /usr/local/lib to your target's library search paths and /usr/local/include to the header search paths:
+                    <p>Add /usr/local/lib to your target&#39;s library search paths and /usr/local/include to the header search paths:
                     <img src="https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-search-paths.png" alt="enter image description here"></p>
-                    <p>Then add <code>#include &lt;NetworkCalculator/NetworkCalculator.h&gt;</code> directive at the top of the file you want to use the library's functions in.</p>
-                    <p>Finally, add libNetworkCalculator.dylib to your target's dependency list:
+                    <p>Then add <code>#include &lt;NetworkCalculator/NetworkCalculator.h&gt;</code> directive at the top of the file you want to use the library&#39;s functions in.</p>
+                    <p>Finally, add libNetworkCalculator.dylib to your target&#39;s dependency list:
                     <img src="https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-dependency.png" alt="enter image description here"></p>
                 </div>
             </div>

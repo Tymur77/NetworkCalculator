@@ -476,13 +476,20 @@ Note that the directed broadcast address is not the last ip address.
     $(document).ready(function(){
         $('.type').each(function() {
             var text = $(this).text();
-            text = text.replace(/\b(char|short|int|long|float|double|void)\b/g, '<span class="standard-datatype">$1');
-            text = text.replace(/[*]/g, '<span class="asterisk-character">*');
+            text = text.replace(/\b(char|short|int|long|float|double|void)\b/g, function(match, p1, offset, string) {
+                return $('<span>').addClass('standard-datatype').text(p1).prop('outerHTML');
+            });
+            text = text.replace(/([*])/g, function(match, p1, offset, string) {
+                return $('<span>').addClass('asterisk-character').text(p1).prop('outerHTML');
+            });
             $(this).html(text);
         });
         $('.preprocessor').each(function() {
             var text = $(this).text();
-            $(this).html(text.replace(/(?<![a-zA-Z_])\b(\d+)/g, '<span class="number">$1'));
+            text = text.replace(/(?<![a-zA-Z_])\b(\d+)/g, function(match, p1, offset, string) {
+                return $('<span>').addClass('number').text(p1).prop('outerHTML');
+            });
+            $(this).html(text);
         });
     });
 </script>
