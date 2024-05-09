@@ -72,7 +72,7 @@ Add /usr/local/lib to your target's library search paths and /usr/local/include 
 
 Then add ```#include <NetworkCalculator/NetworkCalculator.h>``` directive at the top of the file you want to use the library's functions in.
 
-Finally, add libNetworkCalculator.dylib to your target's dependenccy list:
+Finally, add libNetworkCalculator.dylib to your target's dependency list:
 ![enter image description here](https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-dependency.png)
 
 ## Documentation
