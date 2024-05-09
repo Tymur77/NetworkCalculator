@@ -68,8 +68,12 @@ Open the .xcodeproj file in Xcode. Build the project. It will copy the headers t
 
 ## Linking with existing projects
 Add /usr/local/lib to your target's library search paths and /usr/local/include to the header search paths:
-![enter image description here](https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/DOC/images/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202024-05-08%20%D0%B2%2022.22.29.png)
+![enter image description here](https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-search-paths.png)
 
-Then add ```#include <NetworkCalculator/NetworkCalculator.h>``` directive at the top of the file you want to use the library's function in.
+Then add ```#include <NetworkCalculator/NetworkCalculator.h>``` directive at the top of the file you want to use the library's functions in.
+
+Finally, add libNetworkCalculator.dylib to your target's dependenccy list:
+![enter image description here](https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-dependency.png)
 
 ## Documentation
+![documentation](https://tymur77.github.io/NetworkCalculator/)

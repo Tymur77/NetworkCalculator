@@ -5,16 +5,18 @@
         <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>masterTOC.html</title>
-                <link rel="stylesheet" href="http://gregfranko.com/jquery.tocify.js/css/bootstrap.css">
-                <link rel="stylesheet" href="http://gregfranko.com/jquery.tocify.js/css/jquery.ui.all.css">
-                <link href="http://gregfranko.com/jquery.tocify.js/css/jquery.tocify.css" rel="stylesheet">
-                <link href="http://gregfranko.com/jquery.tocify.js/css/prettify.css" type="text/css" rel="stylesheet">
-                <script src="http://gregfranko.com/jquery.tocify.js/js/jquery-1.8.3.min.js"></script>
-                <script src="http://gregfranko.com/jquery.tocify.js/js/jquery-ui-1.9.1.custom.min.js"></script>
-                <script src="http://gregfranko.com/jquery.tocify.js/js/bootstrap.js"></script>
-                <script src="http://gregfranko.com/jquery.tocify.js/js/jquery.tocify.js"></script>
-                <script src="http://gregfranko.com/jquery.tocify.js/js/prettify.js"></script>
-                <script src="http://gregfranko.com/jquery.tocify.js/js/githubrepo.js"></script>
+                <style>
+                    @import url("dependencies/bootstrap.css");
+                    @import url("dependencies/jquery.ui.all.css");
+                    @import url("dependencies/jquery.tocify.css");
+                    @import url("dependencies/prettify.css");
+                </style>
+                <script src="dependencies/jquery-1.8.3.min.js"></script>
+                <script src="dependencies/jquery-ui-1.9.1.custom.min.js"></script>
+                <script src="dependencies/bootstrap.js"></script>
+                <script src="dependencies/jquery.tocify.js"></script>
+                <script src="dependencies/prettify.js"></script>
+                <script src="dependencies/githubrepo.js"></script>
                 <script>
                     $(document).ready(function() {
                         var currentTitle = $('title').text();
@@ -89,7 +91,77 @@
                     </invisible>
                 </div>
                 <div class="span9">
-                    
+                    <h1 id="networkcalculator">NetworkCalculator</h1>
+                    <h2 id="description">Description</h2>
+                    <p>NetworkCalculator is a dynamic library that manages available host space in IP addresses and calculates subnetworks. The idea came from a task from one exam in the first course of the cisco CCNA course series.</p>
+                    <h2 id="example">Example</h2>
+                    <p>code:</p>
+                    <pre><code class="lang-C"><span class="hljs-comment">// Create network with 24-bit mask</span>
+                    Network *network = CreateNetwork(<span class="hljs-string">"192.168.0.0"</span>, <span class="hljs-number">24</span>);
+                    <span class="hljs-keyword">if</span> (network == <span class="hljs-literal">NULL</span>) {
+                        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+                    }
+
+                    <span class="hljs-keyword">char</span> *description = CreateNetworkDescription(network);
+                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Parent network:\n%s\n\n"</span>, description);
+                    <span class="hljs-comment">// Free strings returned by the library's functions</span>
+                    <span class="hljs-built_in">free</span>(description);
+
+                    <span class="hljs-comment">// The next block of code demonstrates how to use</span>
+                    <span class="hljs-comment">// the library's functionality to split the network</span>
+                    <span class="hljs-comment">// into two subnetworks with 100 and 50 hosts correspondingly.</span>
+                    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> hosts[] = {<span class="hljs-number">100</span>, <span class="hljs-number">50</span>, <span class="hljs-number">0</span>};
+                    <span class="hljs-keyword">size_t</span> count = <span class="hljs-keyword">sizeof</span>(hosts) / <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>) - <span class="hljs-number">1</span>;
+                    Network **subnetworks = CreateSubnetworks(network, hosts);
+                    <span class="hljs-keyword">if</span> (subnetworks != <span class="hljs-literal">NULL</span>) {
+                        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; count; i++) {
+                            Network *subnetwork = subnetworks[i];
+                            description = CreateNetworkDescription(subnetwork);
+                            <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Subnetwork %d:\n%s\n\n"</span>, i + <span class="hljs-number">1</span>, description);
+                            <span class="hljs-built_in">free</span>(description);
+                        }
+                        <span class="hljs-built_in">free</span>(subnetworks);
+                    }
+
+                    <span class="hljs-comment">// Free all networks</span>
+                    <span class="hljs-built_in">free</span>(network);
+                    </code></pre>
+                    <p>Output:</p>
+                    <pre><code>Parent network:
+                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.0</span>/<span class="hljs-number">24</span>
+                    binary mask: <span class="hljs-number">11111111.11111111</span><span class="hljs-meta">.11111111</span><span class="hljs-meta">.00000000</span>
+                    decimal mask: <span class="hljs-number">255.255</span><span class="hljs-meta">.255</span><span class="hljs-meta">.0</span>
+                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.1</span>
+                    ...
+                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.254</span>
+
+                    Subnetwork <span class="hljs-number">1</span>:
+                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.0</span>/<span class="hljs-number">25</span>
+                    binary mask: <span class="hljs-number">11111111.11111111</span><span class="hljs-meta">.11111111</span><span class="hljs-meta">.10000000</span>
+                    decimal mask: <span class="hljs-number">255.255</span><span class="hljs-meta">.255</span><span class="hljs-meta">.128</span>
+                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.1</span>
+                    ...
+                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.126</span>
+
+                    Subnetwork <span class="hljs-number">2</span>:
+                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.128</span>/<span class="hljs-number">26</span>
+                    binary mask: <span class="hljs-number">11111111.11111111</span><span class="hljs-meta">.11111111</span><span class="hljs-meta">.11000000</span>
+                    decimal mask: <span class="hljs-number">255.255</span><span class="hljs-meta">.255</span><span class="hljs-meta">.192</span>
+                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.129</span>
+                    ...
+                    <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.190</span>
+                    </code></pre><h2 id="installation">Installation</h2>
+                    <p>Open the .xcodeproj file in Xcode. Build the project. It will copy the headers to /usr/local/include and install the library in /usr/local/lib.</p>
+                    <h2 id="linking-with-existing-projects">Linking with existing projects</h2>
+                    <p>Add /usr/local/lib to your target&#39;s library search paths and /usr/local/include to the header search paths:
+                    <img src="https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-search-paths.png" alt="enter image description here"></p>
+                    <p>Then add <code>#include &lt;NetworkCalculator/NetworkCalculator.h&gt;</code> directive at the top of the file you want to use the library&#39;s functions in.</p>
+                    <p>Finally, add libNetworkCalculator.dylib to your target&#39;s dependenccy list:
+                    <img src="https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-dependency.png" alt="enter image description here"></p>
+                    <h2 id="documentation">Documentation</h2>
+                    <p><img src="https://tymur77.github.io/NetworkCalculator/" alt="documentation">
+                    </p>
+
                 </div>
             </div>
         </div>
