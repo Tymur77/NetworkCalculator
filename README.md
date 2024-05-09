@@ -76,4 +76,4 @@ Finally, add libNetworkCalculator.dylib to your target's dependenccy list:
 ![enter image description here](https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-dependency.png)
 
 ## Documentation
-![documentation](https://tymur77.github.io/NetworkCalculator/)
+[documentation](https://tymur77.github.io/NetworkCalculator/)
