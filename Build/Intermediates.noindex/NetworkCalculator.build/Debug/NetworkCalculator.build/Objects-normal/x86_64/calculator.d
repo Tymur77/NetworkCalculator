@@ -1,4 +1,4 @@
-dependencies: /Users/viktoria/Projects/NetworkCalculator/calculator.c \
+dependencies: /Users/viktoria/Projects/NetworkCalculator/calculator.m \
   /Users/viktoria/Projects/NetworkCalculator/calculator.h \
   /Users/viktoria/Projects/NetworkCalculator/NetworkCalculator/NetworkCalculator.h \
   /Users/viktoria/Projects/NetworkCalculator/NetworkCalculator/datatypes.h \

@@ -263,6 +263,14 @@ function disclosure_triangle(elt) {
 <td id="bodyContents" valign="top">
 <a name="top"></a>
 <h1><a name="RepserentingIPaddresses">Repserenting IP addresses</a></h1>
+<div class="spec_sheet_info_box"><table cellspacing="0" class="specbox">
+<tr>
+<td scope="row"><b>Includes:</b></td>
+<td><div style="margin-bottom:1px"><div class="content_text">
+<!-- a logicalPath="//apple_ref/doc/header/Foundation.h" machineGenerated="true" -->&lt;Foundation/Foundation.h&gt;<!-- /a --><br>
+<a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/doc/header/datatypes.h" logicalPath="//apple_ref/doc/header/datatypes.h" target="_top">"datatypes.h"</a></div></div></td>
+</tr>
+</table></div>
 <h2>Introduction</h2>
 <!-- begin discussion --><!-- headerDoc=discussion;uid=//apple_ref/doc/header/representation.h;name=start --><p>This section lists programming interfaces for generating different
 forms of representaion of IP addresses.
@@ -289,7 +297,7 @@ forms of representaion of IP addresses.
 <!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/func/stringIPAddress;name=end --></p>
 <div class="declaration_indent">
 <pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/stringIPAddress;name=start --><!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/struct/char //apple_ref/c/intf/char //apple_ref/doc/anysymbol/char" machineGenerated="true" --><span class="type">char</span><!-- /a --> <span class="type">*</span><a machinegenerated="true" href="index.html#//apple_ref/c/func/stringIPAddress" logicalPath="//apple_ref/c/instm/stringIPAddress //apple_ref/c/clm/stringIPAddress //apple_ref/c/intfcm/stringIPAddress //apple_ref/c/intfm/stringIPAddress //apple_ref/c/func/stringIPAddress" target="_top"><span class="function">stringIPAddress</span></a>(
-    <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/IPAddress" logicalPath="//apple_ref/c/cl/IPAddress //apple_ref/c/tdef/IPAddress" target="_top"><span class="type">IPAddress</span></a> <span class="param">address</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/stringIPAddress;name=end --></pre>
+    <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/IPAddress" logicalPath="//apple_ref/c/cl/IPAddress //apple_ref/c/tdef/IPAddress" target="_top"><span class="type">IPAddress</span></a> <span class="param">address</span>) <!-- a logicalPath="//apple_ref/c/econst/NS_REFINED_FOR_SWIFT //apple_ref/c/data/NS_REFINED_FOR_SWIFT //apple_ref/c/clconst/NS_REFINED_FOR_SWIFT " machineGenerated="true" --><span class="var">NS_REFINED_FOR_SWIFT</span><!-- /a -->;  <!-- headerDoc=declaration;uid=//apple_ref/c/func/stringIPAddress;name=end --></pre>
 </div>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
 <div class="param_indent">
@@ -322,7 +330,7 @@ the string representation</p></dd>
 <!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/func/binaryIPAddress;name=end --></p>
 <div class="declaration_indent">
 <pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/binaryIPAddress;name=start --><!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/struct/char //apple_ref/c/intf/char //apple_ref/doc/anysymbol/char" machineGenerated="true" --><span class="type">char</span><!-- /a --> <span class="type">*</span><a machinegenerated="true" href="index.html#//apple_ref/c/func/binaryIPAddress" logicalPath="//apple_ref/c/instm/binaryIPAddress //apple_ref/c/clm/binaryIPAddress //apple_ref/c/intfcm/binaryIPAddress //apple_ref/c/intfm/binaryIPAddress //apple_ref/c/func/binaryIPAddress" target="_top"><span class="function">binaryIPAddress</span></a>(
-    <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/IPAddress" logicalPath="//apple_ref/c/cl/IPAddress //apple_ref/c/tdef/IPAddress" target="_top"><span class="type">IPAddress</span></a> <span class="param">address</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/binaryIPAddress;name=end --></pre>
+    <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/IPAddress" logicalPath="//apple_ref/c/cl/IPAddress //apple_ref/c/tdef/IPAddress" target="_top"><span class="type">IPAddress</span></a> <span class="param">address</span>) <!-- a logicalPath="//apple_ref/c/econst/NS_REFINED_FOR_SWIFT //apple_ref/c/data/NS_REFINED_FOR_SWIFT //apple_ref/c/clconst/NS_REFINED_FOR_SWIFT " machineGenerated="true" --><span class="var">NS_REFINED_FOR_SWIFT</span><!-- /a -->;  <!-- headerDoc=declaration;uid=//apple_ref/c/func/binaryIPAddress;name=end --></pre>
 </div>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
 <div class="param_indent">
@@ -363,8 +371,6 @@ the string representation</p></dd>
     .template { color: #000000; }
     .var { color: #1c464a; }
     
-    .declaration_indent { }
-    .type, .char, .comment, .function, .keyword, .number, .param, .preprocessor, .string, .template, .var { }
     .declaration_indent pre { color: #000000; }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -378,6 +384,9 @@ the string representation</p></dd>
             text = text.replace(/([*])/g, function(match, p1, offset, string) {
                 return $('<span>').addClass('asterisk-character').text(p1).prop('outerHTML');
             });
+            text = text.replace(/\b(NS_DESIGNATED_INITIALIZER|NS_REFINED_FOR_SWIFT|NS_ERROR_ENUM|NS_STRING_ENUM|NS_SWIFT_NAME|NS_ENUM|NS_SWIFT_NOTHROW|DEPRECATED_ATTRIBUTE|NS_UNAVAILABLE)\b/g, function(match, p1, offset, string) {
+                return $('<span>').addClass('preprocessor').text(p1).prop('outerHTML');
+            });
             $(this).html(text);
         });
         $('.preprocessor').each(function() {
@@ -387,13 +396,20 @@ the string representation</p></dd>
             });
             $(this).html(text);
         });
+        $('.var').each(function() {
+            var text = $(this).text();
+            text = text.replace(/\b(NS_DESIGNATED_INITIALIZER|NS_REFINED_FOR_SWIFT|NS_ERROR_ENUM|NS_STRING_ENUM|NS_SWIFT_NAME|NS_ENUM|NS_SWIFT_NOTHROW|DEPRECATED_ATTRIBUTE|NS_UNAVAILABLE)\b/g, function(match, p1, offset, string) {
+                return $('<span>').addClass('preprocessor').text(p1).prop('outerHTML');
+            });
+            $(this).html(text);
+        });
     });
 </script>
 
 <!-- end of footer -->
 <hr class="afterFooter">
 <div class="hd_copyright_and_timestamp">
-<p class="hd_timestamp">Last Updated: Thursday, May 09, 2024
+<p class="hd_timestamp">Last Updated: Wednesday, May 15, 2024
 </p>
 </div>
 </td>

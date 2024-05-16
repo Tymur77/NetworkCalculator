@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include "NetworkCalculator/NetworkCalculator.h"
+#include "sort.h"
+#include "misc.h"
 
 #define EXPORT __attribute__((visibility("default")))
 

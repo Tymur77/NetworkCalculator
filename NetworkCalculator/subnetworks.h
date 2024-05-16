@@ -1,6 +1,8 @@
 #ifndef subnetworks_h
 #define subnetworks_h
 
+#include <Foundation/Foundation.h>
+#include "datatypes.h"
 
 /*!
  @header Creating subnetworks
@@ -20,7 +22,7 @@
  @discussion The library does not perform any cleaning work of freeing allocated structures.
  You must do so after you are done using the network.
  */
-Network *CreateNetwork(const char *address, unsigned char mask);
+Network *CreateNetwork(const char *address, unsigned char mask) NS_REFINED_FOR_SWIFT;
 
 
 /*!
@@ -29,7 +31,7 @@ Network *CreateNetwork(const char *address, unsigned char mask);
  @result Returns a pointer to a C-style string with the description of the network.
  @attributeblock Memory After you are done using the string, call free.
  */
-char *CreateNetworkDescription(Network *network);
+char *CreateNetworkDescription(Network *network) NS_REFINED_FOR_SWIFT;
 
 /*!
  @abstract Allocates new subnetworks
@@ -53,7 +55,7 @@ char *CreateNetworkDescription(Network *network);
  Note that unlike parameter hosts, the yielded array does not end with a NULL pointer. When iterating through it,
  the number of elements is exactly one less than that of hosts.
  */
-Network **CreateSubnetworks(Network *parent, unsigned int *hosts);
+Network **CreateSubnetworks(Network *parent, unsigned int *hosts) NS_REFINED_FOR_SWIFT;
 
 
 #endif /* subnetworks_h */

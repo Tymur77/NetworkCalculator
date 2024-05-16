@@ -62,15 +62,26 @@ decimal mask: 255.255.255.192
 ...
 192.168.0.190
 ```
+In Swift:
+```
+let ntwk = Network(address: "192.168.0.1", mask: 24)!
+print("Parent network:\n\(ntwk.description)\n")
+if let subnetworks = ntwk.subnetworks(hosts: [50, 100]) {
+    for i in 0..<subnetworks.count {
+        let subnetwork = subnetworks[i]
+        print("Subnetwork \(i + 1):\n\(subnetwork.description)\n")
+    }
+}
+```
 
 ## Installation
-Open the .xcodeproj file in Xcode. Build the project. It will copy the headers to /usr/local/include and install the library in /usr/local/lib.
+After you download the repository, open the .xcodeproj file in Xcode. Build the project. It will copy the headers to /usr/local/include and install the library in /usr/local/lib.
 
 ## Linking with existing projects
 Add /usr/local/lib to your target's library search paths and /usr/local/include to the header search paths:
 ![enter image description here](https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-search-paths.png)
 
-Then add ```#include <NetworkCalculator/NetworkCalculator.h>``` directive at the top of the file you want to use the library's functions in.
+Then add ```#include <NetworkCalculator/NetworkCalculator.h>``` directive at the top of the file you want to use the library's functions in. To use the library in a Swift project, add the same directive to the bridging header file and perform one extra step, which consists of copying [NetworkCalculator.swift](https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/NetworkCalculator.swift) into your project.
 
 Finally, add libNetworkCalculator.dylib to your target's dependency list:
 ![enter image description here](https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-dependency.png)

@@ -263,6 +263,14 @@ function disclosure_triangle(elt) {
 <td id="bodyContents" valign="top">
 <a name="top"></a>
 <h1><a name="WorkingwithIPaddresses">Working with IP addresses</a></h1>
+<div class="spec_sheet_info_box"><table cellspacing="0" class="specbox">
+<tr>
+<td scope="row"><b>Includes:</b></td>
+<td><div style="margin-bottom:1px"><div class="content_text">
+<!-- a logicalPath="//apple_ref/doc/header/Foundation.h" machineGenerated="true" -->&lt;Foundation/Foundation.h&gt;<!-- /a --><br>
+<a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/doc/header/datatypes.h" logicalPath="//apple_ref/doc/header/datatypes.h" target="_top">"datatypes.h"</a></div></div></td>
+</tr>
+</table></div>
 <h2>Introduction</h2>
 <!-- begin discussion --><!-- headerDoc=discussion;uid=//apple_ref/doc/header/ipaddress.h;name=start --><p>This section describes how to obtain IP addresses
 from other data types.
@@ -293,7 +301,7 @@ from other data types.
 <div class="declaration_indent">
 <pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/IPAddressFromString;name=start --><!-- a logicalPath="//apple_ref/c/cl/int //apple_ref/c/tdef/int //apple_ref/c/tag/int //apple_ref/c/struct/int //apple_ref/c/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a --> <a machinegenerated="true" href="index.html#//apple_ref/c/func/IPAddressFromString" logicalPath="//apple_ref/c/instm/IPAddressFromString //apple_ref/c/clm/IPAddressFromString //apple_ref/c/intfcm/IPAddressFromString //apple_ref/c/intfm/IPAddressFromString //apple_ref/c/func/IPAddressFromString" target="_top"><span class="function">IPAddressFromString</span></a>(
     <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/IPAddress" logicalPath="//apple_ref/c/cl/IPAddress //apple_ref/c/tdef/IPAddress" target="_top"><span class="type">IPAddress</span></a> <span class="param">address</span>,
-    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/struct/char //apple_ref/c/intf/char //apple_ref/doc/anysymbol/char" machineGenerated="true" --><span class="type">char</span><!-- /a --> <span class="type">*</span><span class="param">string</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/IPAddressFromString;name=end --></pre>
+    <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/struct/char //apple_ref/c/intf/char //apple_ref/doc/anysymbol/char" machineGenerated="true" --><span class="type">char</span><!-- /a --> <span class="type">*</span><span class="param">string</span>) <!-- a logicalPath="//apple_ref/c/econst/NS_REFINED_FOR_SWIFT //apple_ref/c/data/NS_REFINED_FOR_SWIFT //apple_ref/c/clconst/NS_REFINED_FOR_SWIFT " machineGenerated="true" --><span class="var">NS_REFINED_FOR_SWIFT</span><!-- /a -->;  <!-- headerDoc=declaration;uid=//apple_ref/c/func/IPAddressFromString;name=end --></pre>
 </div>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
 <div class="param_indent">
@@ -314,7 +322,7 @@ from other data types.
 </div>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
 <p><!-- begin return value --></p>
-<p>Returns 0, if the operation was successful, otherwise a non-zero value.
+<p>On success returns a non-zero value.
 
 <!-- end return value --></p>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
@@ -333,7 +341,7 @@ greater than the maximum digit of base 10 (which is 9), or an arbitrary characte
 <div class="declaration_indent">
 <pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/firstIPAddress;name=start --><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/struct/void //apple_ref/c/intf/void //apple_ref/doc/anysymbol/void" machineGenerated="true" --><span class="type">void</span><!-- /a --> <a machinegenerated="true" href="index.html#//apple_ref/c/func/firstIPAddress" logicalPath="//apple_ref/c/instm/firstIPAddress //apple_ref/c/clm/firstIPAddress //apple_ref/c/intfcm/firstIPAddress //apple_ref/c/intfm/firstIPAddress //apple_ref/c/func/firstIPAddress" target="_top"><span class="function">firstIPAddress</span></a>(
     <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/IPAddress" logicalPath="//apple_ref/c/cl/IPAddress //apple_ref/c/tdef/IPAddress" target="_top"><span class="type">IPAddress</span></a> <span class="param">address</span>,
-    <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/Network" logicalPath="//apple_ref/c/cl/Network //apple_ref/c/tdef/Network" target="_top"><span class="type">Network</span></a> <span class="type">*</span><span class="param">network</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/firstIPAddress;name=end --></pre>
+    <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/Network" logicalPath="//apple_ref/c/cl/Network //apple_ref/c/tdef/Network" target="_top"><span class="type">Network</span></a> <span class="type">*</span><span class="param">network</span>) <!-- a logicalPath="//apple_ref/c/econst/NS_REFINED_FOR_SWIFT //apple_ref/c/data/NS_REFINED_FOR_SWIFT //apple_ref/c/clconst/NS_REFINED_FOR_SWIFT " machineGenerated="true" --><span class="var">NS_REFINED_FOR_SWIFT</span><!-- /a -->;  <!-- headerDoc=declaration;uid=//apple_ref/c/func/firstIPAddress;name=end --></pre>
 </div>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
 <div class="param_indent">
@@ -369,7 +377,7 @@ with mask "255.255.0.0" will have the first ip address equal to "192.168.0.1".
 <div class="declaration_indent">
 <pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/lastIPAddress;name=start --><!-- a logicalPath="//apple_ref/c/cl/void //apple_ref/c/tdef/void //apple_ref/c/tag/void //apple_ref/c/struct/void //apple_ref/c/intf/void //apple_ref/doc/anysymbol/void" machineGenerated="true" --><span class="type">void</span><!-- /a --> <a machinegenerated="true" href="index.html#//apple_ref/c/func/lastIPAddress" logicalPath="//apple_ref/c/instm/lastIPAddress //apple_ref/c/clm/lastIPAddress //apple_ref/c/intfcm/lastIPAddress //apple_ref/c/intfm/lastIPAddress //apple_ref/c/func/lastIPAddress" target="_top"><span class="function">lastIPAddress</span></a>(
     <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/IPAddress" logicalPath="//apple_ref/c/cl/IPAddress //apple_ref/c/tdef/IPAddress" target="_top"><span class="type">IPAddress</span></a> <span class="param">address</span>,
-    <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/Network" logicalPath="//apple_ref/c/cl/Network //apple_ref/c/tdef/Network" target="_top"><span class="type">Network</span></a> <span class="type">*</span><span class="param">network</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/lastIPAddress;name=end --></pre>
+    <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/Network" logicalPath="//apple_ref/c/cl/Network //apple_ref/c/tdef/Network" target="_top"><span class="type">Network</span></a> <span class="type">*</span><span class="param">network</span>) <!-- a logicalPath="//apple_ref/c/econst/NS_REFINED_FOR_SWIFT //apple_ref/c/data/NS_REFINED_FOR_SWIFT //apple_ref/c/clconst/NS_REFINED_FOR_SWIFT " machineGenerated="true" --><span class="var">NS_REFINED_FOR_SWIFT</span><!-- /a -->;  <!-- headerDoc=declaration;uid=//apple_ref/c/func/lastIPAddress;name=end --></pre>
 </div>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
 <div class="param_indent">
@@ -467,8 +475,6 @@ Note that the directed broadcast address is not the last ip address.
     .template { color: #000000; }
     .var { color: #1c464a; }
     
-    .declaration_indent { }
-    .type, .char, .comment, .function, .keyword, .number, .param, .preprocessor, .string, .template, .var { }
     .declaration_indent pre { color: #000000; }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -482,6 +488,9 @@ Note that the directed broadcast address is not the last ip address.
             text = text.replace(/([*])/g, function(match, p1, offset, string) {
                 return $('<span>').addClass('asterisk-character').text(p1).prop('outerHTML');
             });
+            text = text.replace(/\b(NS_DESIGNATED_INITIALIZER|NS_REFINED_FOR_SWIFT|NS_ERROR_ENUM|NS_STRING_ENUM|NS_SWIFT_NAME|NS_ENUM|NS_SWIFT_NOTHROW|DEPRECATED_ATTRIBUTE|NS_UNAVAILABLE)\b/g, function(match, p1, offset, string) {
+                return $('<span>').addClass('preprocessor').text(p1).prop('outerHTML');
+            });
             $(this).html(text);
         });
         $('.preprocessor').each(function() {
@@ -491,13 +500,20 @@ Note that the directed broadcast address is not the last ip address.
             });
             $(this).html(text);
         });
+        $('.var').each(function() {
+            var text = $(this).text();
+            text = text.replace(/\b(NS_DESIGNATED_INITIALIZER|NS_REFINED_FOR_SWIFT|NS_ERROR_ENUM|NS_STRING_ENUM|NS_SWIFT_NAME|NS_ENUM|NS_SWIFT_NOTHROW|DEPRECATED_ATTRIBUTE|NS_UNAVAILABLE)\b/g, function(match, p1, offset, string) {
+                return $('<span>').addClass('preprocessor').text(p1).prop('outerHTML');
+            });
+            $(this).html(text);
+        });
     });
 </script>
 
 <!-- end of footer -->
 <hr class="afterFooter">
 <div class="hd_copyright_and_timestamp">
-<p class="hd_timestamp">Last Updated: Thursday, May 09, 2024
+<p class="hd_timestamp">Last Updated: Wednesday, May 15, 2024
 </p>
 </div>
 </td>

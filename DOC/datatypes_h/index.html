@@ -263,6 +263,14 @@ function disclosure_triangle(elt) {
 <td id="bodyContents" valign="top">
 <a name="top"></a>
 <h1><a name="Datatypes">Data types</a></h1>
+<div class="spec_sheet_info_box"><table cellspacing="0" class="specbox">
+<tr>
+<td scope="row"><b>Includes:</b></td>
+<td><div style="margin-bottom:1px"><div class="content_text">
+<!-- a logicalPath="//apple_ref/doc/header/Foundation.h" machineGenerated="true" -->&lt;Foundation/Foundation.h&gt;<!-- /a -->
+</div></div></td>
+</tr>
+</table></div>
 <h2>Introduction</h2>
 <!-- begin discussion --><!-- headerDoc=discussion;uid=//apple_ref/doc/header/datatypes.h;name=start --><p>To calculate subnetworks NetworkCalculator operates on some basic data types,
 which are described below.
@@ -288,7 +296,7 @@ which are described below.
 <p>Represents an IPv4 address
 <!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/tdef/IPAddress;name=end --></p>
 <div class="declaration_indent">
-<pre><!-- headerDoc=declaration;uid=//apple_ref/c/tdef/IPAddress;name=start --><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/struct/char //apple_ref/c/intf/char //apple_ref/doc/anysymbol/char" machineGenerated="true" --><span class="type">char</span><!-- /a --> <a machinegenerated="true" href="index.html#//apple_ref/c/tdef/IPAddress" logicalPath="//apple_ref/c/cl/IPAddress //apple_ref/c/tdef/IPAddress" target="_top"><span class="type">IPAddress</span></a>[<span class="number">4</span>];  <!-- headerDoc=declaration;uid=//apple_ref/c/tdef/IPAddress;name=end --></pre>
+<pre><!-- headerDoc=declaration;uid=//apple_ref/c/tdef/IPAddress;name=start --><!-- a logicalPath="//apple_ref/c/cl/NS_REFINED_FOR_SWIFT //apple_ref/c/tdef/NS_REFINED_FOR_SWIFT //apple_ref/c/tag/NS_REFINED_FOR_SWIFT //apple_ref/c/struct/NS_REFINED_FOR_SWIFT //apple_ref/c/intf/NS_REFINED_FOR_SWIFT //apple_ref/doc/anysymbol/NS_REFINED_FOR_SWIFT" machineGenerated="true" --><span class="type">NS_REFINED_FOR_SWIFT</span><!-- /a --> <span class="keyword">typedef</span> <span class="keyword">unsigned</span> <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/struct/char //apple_ref/c/intf/char //apple_ref/doc/anysymbol/char" machineGenerated="true" --><span class="type">char</span><!-- /a --> <a machinegenerated="true" href="index.html#//apple_ref/c/tdef/IPAddress" logicalPath="//apple_ref/c/cl/IPAddress //apple_ref/c/tdef/IPAddress" target="_top"><span class="type">IPAddress</span></a>[<span class="number">4</span>];  <!-- headerDoc=declaration;uid=//apple_ref/c/tdef/IPAddress;name=end --></pre>
 </div>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
 <!-- begin discussion --><!-- headerDoc=discussion;uid=//apple_ref/c/tdef/IPAddress;name=start --><p>An array of 4 unsigned 8-bit integers is convenient
@@ -304,7 +312,7 @@ for storing each of the parts of an ip address, separated by a dot.
 <p>Represents an IPv4 network
 <!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/tdef/Network;name=end --></p>
 <div class="declaration_indent">
-<pre><!-- headerDoc=declaration;uid=//apple_ref/c/tdef/Network;name=start --><span class="keyword">typedef</span> <span class="keyword">struct</span> {  
+<pre><!-- headerDoc=declaration;uid=//apple_ref/c/tdef/Network;name=start --><!-- a logicalPath="//apple_ref/c/cl/NS_REFINED_FOR_SWIFT //apple_ref/c/tdef/NS_REFINED_FOR_SWIFT //apple_ref/c/tag/NS_REFINED_FOR_SWIFT //apple_ref/c/struct/NS_REFINED_FOR_SWIFT //apple_ref/c/intf/NS_REFINED_FOR_SWIFT //apple_ref/doc/anysymbol/NS_REFINED_FOR_SWIFT" machineGenerated="true" --><span class="type">NS_REFINED_FOR_SWIFT</span><!-- /a --> <span class="keyword">typedef</span> <span class="keyword">struct</span> {  
     <a machinegenerated="true" href="index.html#//apple_ref/c/tdef/IPAddress" logicalPath="//apple_ref/c/cl/IPAddress //apple_ref/c/tdef/IPAddress" target="_top"><span class="type">IPAddress</span></a> <!-- a logicalPath="//apple_ref/c/econst/address //apple_ref/c/data/address //apple_ref/c/clconst/address " machineGenerated="true" --><span class="var">address</span><!-- /a -->;  
     <a machinegenerated="true" href="index.html#//apple_ref/c/tdef/IPAddress" logicalPath="//apple_ref/c/cl/IPAddress //apple_ref/c/tdef/IPAddress" target="_top"><span class="type">IPAddress</span></a> <!-- a logicalPath="//apple_ref/c/econst/mask //apple_ref/c/data/mask //apple_ref/c/clconst/mask " machineGenerated="true" --><span class="var">mask</span><!-- /a -->; 
 } <!-- a logicalPath="//apple_ref/c/econst/Network //apple_ref/c/data/Network //apple_ref/c/clconst/Network " machineGenerated="true" --><span class="var">Network</span><!-- /a -->;  <!-- headerDoc=declaration;uid=//apple_ref/c/tdef/Network;name=end --></pre>
@@ -356,8 +364,6 @@ the number of masked bits.
     .template { color: #000000; }
     .var { color: #1c464a; }
     
-    .declaration_indent { }
-    .type, .char, .comment, .function, .keyword, .number, .param, .preprocessor, .string, .template, .var { }
     .declaration_indent pre { color: #000000; }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -371,6 +377,9 @@ the number of masked bits.
             text = text.replace(/([*])/g, function(match, p1, offset, string) {
                 return $('<span>').addClass('asterisk-character').text(p1).prop('outerHTML');
             });
+            text = text.replace(/\b(NS_DESIGNATED_INITIALIZER|NS_REFINED_FOR_SWIFT|NS_ERROR_ENUM|NS_STRING_ENUM|NS_SWIFT_NAME|NS_ENUM|NS_SWIFT_NOTHROW|DEPRECATED_ATTRIBUTE|NS_UNAVAILABLE)\b/g, function(match, p1, offset, string) {
+                return $('<span>').addClass('preprocessor').text(p1).prop('outerHTML');
+            });
             $(this).html(text);
         });
         $('.preprocessor').each(function() {
@@ -380,13 +389,20 @@ the number of masked bits.
             });
             $(this).html(text);
         });
+        $('.var').each(function() {
+            var text = $(this).text();
+            text = text.replace(/\b(NS_DESIGNATED_INITIALIZER|NS_REFINED_FOR_SWIFT|NS_ERROR_ENUM|NS_STRING_ENUM|NS_SWIFT_NAME|NS_ENUM|NS_SWIFT_NOTHROW|DEPRECATED_ATTRIBUTE|NS_UNAVAILABLE)\b/g, function(match, p1, offset, string) {
+                return $('<span>').addClass('preprocessor').text(p1).prop('outerHTML');
+            });
+            $(this).html(text);
+        });
     });
 </script>
 
 <!-- end of footer -->
 <hr class="afterFooter">
 <div class="hd_copyright_and_timestamp">
-<p class="hd_timestamp">Last Updated: Thursday, May 09, 2024
+<p class="hd_timestamp">Last Updated: Wednesday, May 15, 2024
 </p>
 </div>
 </td>

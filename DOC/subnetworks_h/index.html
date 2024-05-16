@@ -263,6 +263,14 @@ function disclosure_triangle(elt) {
 <td id="bodyContents" valign="top">
 <a name="top"></a>
 <h1><a name="Creatingsubnetworks">Creating subnetworks</a></h1>
+<div class="spec_sheet_info_box"><table cellspacing="0" class="specbox">
+<tr>
+<td scope="row"><b>Includes:</b></td>
+<td><div style="margin-bottom:1px"><div class="content_text">
+<!-- a logicalPath="//apple_ref/doc/header/Foundation.h" machineGenerated="true" -->&lt;Foundation/Foundation.h&gt;<!-- /a --><br>
+<a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/doc/header/datatypes.h" logicalPath="//apple_ref/doc/header/datatypes.h" target="_top">"datatypes.h"</a></div></div></td>
+</tr>
+</table></div>
 <h2>Introduction</h2>
 <!-- begin discussion --><!-- headerDoc=discussion;uid=//apple_ref/doc/header/subnetworks.h;name=start --><p>This section describes how to create an IPv4 network,
 generate detailed information about networks, and use programming interfaces, which manage
@@ -294,7 +302,7 @@ available host space to split a network into multiple subnetworks (this process 
 <div class="declaration_indent">
 <pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/CreateNetwork;name=start --><a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/Network" logicalPath="//apple_ref/c/cl/Network //apple_ref/c/tdef/Network" target="_top"><span class="type">Network</span></a> <span class="type">*</span><a machinegenerated="true" href="index.html#//apple_ref/c/func/CreateNetwork" logicalPath="//apple_ref/c/instm/CreateNetwork //apple_ref/c/clm/CreateNetwork //apple_ref/c/intfcm/CreateNetwork //apple_ref/c/intfm/CreateNetwork //apple_ref/c/func/CreateNetwork" target="_top"><span class="function">CreateNetwork</span></a>(
     <span class="keyword">const</span> <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/struct/char //apple_ref/c/intf/char //apple_ref/doc/anysymbol/char" machineGenerated="true" --><span class="type">char</span><!-- /a --> <span class="type">*</span><span class="param">address</span>,
-    <span class="keyword">unsigned</span> <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/struct/char //apple_ref/c/intf/char //apple_ref/doc/anysymbol/char" machineGenerated="true" --><span class="type">char</span><!-- /a --> <span class="param">mask</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/CreateNetwork;name=end --></pre>
+    <span class="keyword">unsigned</span> <!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/struct/char //apple_ref/c/intf/char //apple_ref/doc/anysymbol/char" machineGenerated="true" --><span class="type">char</span><!-- /a --> <span class="param">mask</span>) <!-- a logicalPath="//apple_ref/c/econst/NS_REFINED_FOR_SWIFT //apple_ref/c/data/NS_REFINED_FOR_SWIFT //apple_ref/c/clconst/NS_REFINED_FOR_SWIFT " machineGenerated="true" --><span class="var">NS_REFINED_FOR_SWIFT</span><!-- /a -->;  <!-- headerDoc=declaration;uid=//apple_ref/c/func/CreateNetwork;name=end --></pre>
 </div>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
 <div class="param_indent">
@@ -334,7 +342,7 @@ You must do so after you are done using the network.
 <!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/c/func/CreateNetworkDescription;name=end --></p>
 <div class="declaration_indent">
 <pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/CreateNetworkDescription;name=start --><!-- a logicalPath="//apple_ref/c/cl/char //apple_ref/c/tdef/char //apple_ref/c/tag/char //apple_ref/c/struct/char //apple_ref/c/intf/char //apple_ref/doc/anysymbol/char" machineGenerated="true" --><span class="type">char</span><!-- /a --> <span class="type">*</span><a machinegenerated="true" href="index.html#//apple_ref/c/func/CreateNetworkDescription" logicalPath="//apple_ref/c/instm/CreateNetworkDescription //apple_ref/c/clm/CreateNetworkDescription //apple_ref/c/intfcm/CreateNetworkDescription //apple_ref/c/intfm/CreateNetworkDescription //apple_ref/c/func/CreateNetworkDescription" target="_top"><span class="function">CreateNetworkDescription</span></a>(
-    <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/Network" logicalPath="//apple_ref/c/cl/Network //apple_ref/c/tdef/Network" target="_top"><span class="type">Network</span></a> <span class="type">*</span><span class="param">network</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/CreateNetworkDescription;name=end --></pre>
+    <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/Network" logicalPath="//apple_ref/c/cl/Network //apple_ref/c/tdef/Network" target="_top"><span class="type">Network</span></a> <span class="type">*</span><span class="param">network</span>) <!-- a logicalPath="//apple_ref/c/econst/NS_REFINED_FOR_SWIFT //apple_ref/c/data/NS_REFINED_FOR_SWIFT //apple_ref/c/clconst/NS_REFINED_FOR_SWIFT " machineGenerated="true" --><span class="var">NS_REFINED_FOR_SWIFT</span><!-- /a -->;  <!-- headerDoc=declaration;uid=//apple_ref/c/func/CreateNetworkDescription;name=end --></pre>
 </div>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
 <div class="param_indent">
@@ -367,7 +375,7 @@ You must do so after you are done using the network.
 <div class="declaration_indent">
 <pre><!-- headerDoc=declaration;uid=//apple_ref/c/func/CreateSubnetworks;name=start --><a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/Network" logicalPath="//apple_ref/c/cl/Network //apple_ref/c/tdef/Network" target="_top"><span class="type">Network</span></a> <span class="type">*</span><span class="type">*</span><a machinegenerated="true" href="index.html#//apple_ref/c/func/CreateSubnetworks" logicalPath="//apple_ref/c/instm/CreateSubnetworks //apple_ref/c/clm/CreateSubnetworks //apple_ref/c/intfcm/CreateSubnetworks //apple_ref/c/intfm/CreateSubnetworks //apple_ref/c/func/CreateSubnetworks" target="_top"><span class="function">CreateSubnetworks</span></a>(
     <a machinegenerated="true" href="../datatypes_h/index.html#//apple_ref/c/tdef/Network" logicalPath="//apple_ref/c/cl/Network //apple_ref/c/tdef/Network" target="_top"><span class="type">Network</span></a> <span class="type">*</span><span class="param">parent</span>,
-    <span class="keyword">unsigned</span> <!-- a logicalPath="//apple_ref/c/cl/int //apple_ref/c/tdef/int //apple_ref/c/tag/int //apple_ref/c/struct/int //apple_ref/c/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a --> <span class="type">*</span><span class="param">hosts</span>);  <!-- headerDoc=declaration;uid=//apple_ref/c/func/CreateSubnetworks;name=end --></pre>
+    <span class="keyword">unsigned</span> <!-- a logicalPath="//apple_ref/c/cl/int //apple_ref/c/tdef/int //apple_ref/c/tag/int //apple_ref/c/struct/int //apple_ref/c/intf/int //apple_ref/doc/anysymbol/int" machineGenerated="true" --><span class="type">int</span><!-- /a --> <span class="type">*</span><span class="param">hosts</span>) <!-- a logicalPath="//apple_ref/c/econst/NS_REFINED_FOR_SWIFT //apple_ref/c/data/NS_REFINED_FOR_SWIFT //apple_ref/c/clconst/NS_REFINED_FOR_SWIFT " machineGenerated="true" --><span class="var">NS_REFINED_FOR_SWIFT</span><!-- /a -->;  <!-- headerDoc=declaration;uid=//apple_ref/c/func/CreateSubnetworks;name=end --></pre>
 </div>
 <h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
 <div class="param_indent">
@@ -428,8 +436,6 @@ the number of elements is exactly one less than that of hosts.
     .template { color: #000000; }
     .var { color: #1c464a; }
     
-    .declaration_indent { }
-    .type, .char, .comment, .function, .keyword, .number, .param, .preprocessor, .string, .template, .var { }
     .declaration_indent pre { color: #000000; }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -443,6 +449,9 @@ the number of elements is exactly one less than that of hosts.
             text = text.replace(/([*])/g, function(match, p1, offset, string) {
                 return $('<span>').addClass('asterisk-character').text(p1).prop('outerHTML');
             });
+            text = text.replace(/\b(NS_DESIGNATED_INITIALIZER|NS_REFINED_FOR_SWIFT|NS_ERROR_ENUM|NS_STRING_ENUM|NS_SWIFT_NAME|NS_ENUM|NS_SWIFT_NOTHROW|DEPRECATED_ATTRIBUTE|NS_UNAVAILABLE)\b/g, function(match, p1, offset, string) {
+                return $('<span>').addClass('preprocessor').text(p1).prop('outerHTML');
+            });
             $(this).html(text);
         });
         $('.preprocessor').each(function() {
@@ -452,13 +461,20 @@ the number of elements is exactly one less than that of hosts.
             });
             $(this).html(text);
         });
+        $('.var').each(function() {
+            var text = $(this).text();
+            text = text.replace(/\b(NS_DESIGNATED_INITIALIZER|NS_REFINED_FOR_SWIFT|NS_ERROR_ENUM|NS_STRING_ENUM|NS_SWIFT_NAME|NS_ENUM|NS_SWIFT_NOTHROW|DEPRECATED_ATTRIBUTE|NS_UNAVAILABLE)\b/g, function(match, p1, offset, string) {
+                return $('<span>').addClass('preprocessor').text(p1).prop('outerHTML');
+            });
+            $(this).html(text);
+        });
     });
 </script>
 
 <!-- end of footer -->
 <hr class="afterFooter">
 <div class="hd_copyright_and_timestamp">
-<p class="hd_timestamp">Last Updated: Thursday, May 09, 2024
+<p class="hd_timestamp">Last Updated: Wednesday, May 15, 2024
 </p>
 </div>
 </td>

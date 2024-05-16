@@ -1,6 +1,8 @@
 #ifndef ipaddress_h
 #define ipaddress_h
 
+#include <Foundation/Foundation.h>
+#include "datatypes.h"
 
 /*!
  @header Working with IP addresses
@@ -32,12 +34,12 @@ address1[3] = address2[3]
  @abstract Populates an ip address with values from a string
  @param address ip address, which will hold the extracted values
  @param string C-style string, reprsenting the ip address, for example, "192.168.0.1"
- @return Returns 0, if the operation was successful, otherwise a non-zero value.
+ @return On success returns a non-zero value.
  @discussion
  The delimiter between the parts of the ip address may be any character,
  greater than the maximum digit of base 10 (which is 9), or an arbitrary character.
  */
-int IPAddressFromString(IPAddress address, const char *string);
+int IPAddressFromString(IPAddress address, const char *string) NS_REFINED_FOR_SWIFT;
 
 
 /*!
@@ -48,7 +50,7 @@ int IPAddressFromString(IPAddress address, const char *string);
  @discussion For example, network "192.168.0.0"
  with mask "255.255.0.0" will have the first ip address equal to "192.168.0.1".
  */
-void firstIPAddress(IPAddress address, Network *network);
+void firstIPAddress(IPAddress address, Network *network) NS_REFINED_FOR_SWIFT;
 
 
 /*!
@@ -60,7 +62,7 @@ void firstIPAddress(IPAddress address, Network *network);
  with mask "255.255.255.0" will have the first last address equal to "192.168.0.254".
  Note that the directed broadcast address is not the last ip address.
  */
-void lastIPAddress(IPAddress address, Network *network);
+void lastIPAddress(IPAddress address, Network *network) NS_REFINED_FOR_SWIFT;
 
 
 #endif /* ipaddress_h */

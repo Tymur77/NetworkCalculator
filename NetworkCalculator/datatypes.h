@@ -1,6 +1,7 @@
 #ifndef datatypes_h
 #define datatypes_h
 
+#include <Foundation/Foundation.h>
 
 /*!
  @header Data types
@@ -16,7 +17,7 @@
  @discussion An array of 4 unsigned 8-bit integers is convenient
  for storing each of the parts of an ip address, separated by a dot.
  */
-typedef unsigned char IPAddress[4];
+NS_REFINED_FOR_SWIFT typedef unsigned char IPAddress[4];
 
 
 /*!
@@ -32,7 +33,7 @@ typedef unsigned char IPAddress[4];
  generate string representations, ommitting the step of converting
  the number of masked bits.
  */
-typedef struct {
+NS_REFINED_FOR_SWIFT typedef struct {
     /*!
      @field address network's ip address
      */

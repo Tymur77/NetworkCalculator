@@ -160,13 +160,12 @@
                     </invisible>
                 </div>
                 <div class="span9">
-                    <h1 id="networkcalculator">NetworkCalculator</h1>
-                    <h2 id="description">Description</h2>
-                    <p>NetworkCalculator is a dynamic library that manages available host space in IP addresses and calculates subnetworks. The idea came from a task from one exam in the first course of the cisco CCNA course series.</p>
-                    <h2 id="example">Example</h2>
-                    <p>code:</p>
-                    <pre style="font-family: Courier, Consolas, monospace; background-color: #f1f5f9; color: #666"><code class="lang-C" style="font-family: Courier, Consolas, monospace; background-color: #f1f5f9; color: #666">
-<span class="hljs-comment">// Create network with 24-bit mask</span>
+<h1 id="networkcalculator">NetworkCalculator</h1>
+<h2 id="description">Description</h2>
+<p>NetworkCalculator is a dynamic library that manages available host space in IP addresses and calculates subnetworks. The idea came from a task from one exam in the first course of the cisco CCNA course series.</p>
+<h2 id="example">Example</h2>
+<p>code:</p>
+<pre style="background-color: #f1f5f9"><code class="lang-C" style="font-family: Courier, Consolas, monospace; background-color: #f1f5f9; color: #666"><span class="hljs-comment">// Create network with 24-bit mask</span>
 Network *network = CreateNetwork(<span class="hljs-string">"192.168.0.0"</span>, <span class="hljs-number">24</span>);
 <span class="hljs-keyword">if</span> (network == <span class="hljs-literal">NULL</span>) {
     <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
@@ -195,10 +194,9 @@ Network **subnetworks = CreateSubnetworks(network, hosts);
 
 <span class="hljs-comment">// Free all networks</span>
 <span class="hljs-built_in">free</span>(network);
-                    </code></pre>
-                    <p>Output:</p>
-                    <pre style="font-family: Courier, Consolas, monospace; background-color: #f1f5f9; color: #666"><code style="font-family: Courier, Consolas, monospace; background-color: #f1f5f9; color: #666">
-Parent network:
+</code></pre>
+<p>Output:</p>
+<pre style="background-color: #f1f5f9"><code style="font-family: Courier, Consolas, monospace; background-color: #f1f5f9; color: #666">Parent network:
 <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.0</span>/<span class="hljs-number">24</span>
 binary mask: <span class="hljs-number">11111111.11111111</span><span class="hljs-meta">.11111111</span><span class="hljs-meta">.00000000</span>
 decimal mask: <span class="hljs-number">255.255</span><span class="hljs-meta">.255</span><span class="hljs-meta">.0</span>
@@ -221,14 +219,23 @@ decimal mask: <span class="hljs-number">255.255</span><span class="hljs-meta">.2
 <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.129</span>
 ...
 <span class="hljs-number">192.168</span><span class="hljs-meta">.0</span><span class="hljs-meta">.190</span>
-                    </code></pre><h2 id="installation">Installation</h2>
-                    <p>Open the .xcodeproj file in Xcode. Build the project. It will copy the headers to /usr/local/include and install the library in /usr/local/lib.</p>
-                    <h2 id="linking-with-existing-projects">Linking with existing projects</h2>
-                    <p>Add /usr/local/lib to your target's library search paths and /usr/local/include to the header search paths:
-                    <img src="https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-search-paths.png" alt="enter image description here"></p>
-                    <p>Then add <code>#include &lt;NetworkCalculator/NetworkCalculator.h&gt;</code> directive at the top of the file you want to use the library's functions in.</p>
-                    <p>Finally, add libNetworkCalculator.dylib to your target's dependency list:
-                    <img style="width: 650px" src="https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-dependency.png" alt="enter image description here"></p>
+</code></pre><p>In Swift:</p>
+<pre style="background-color: #f1f5f9"><code style="font-family: Courier, Consolas, monospace; background-color: #f1f5f9; color: #666">let ntwk = Network(<span class="hljs-selector-tag">address</span>: <span class="hljs-string">"192.168.0.1"</span>, <span class="hljs-attribute">mask</span>: <span class="hljs-number">24</span>)!
+<span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">"Parent network:\n\(ntwk.description)\n"</span>)</span></span>
+<span class="hljs-keyword">if</span> let subnetworks = ntwk.subnetworks(hosts: [<span class="hljs-number">50</span>, <span class="hljs-number">100</span>]) {
+    <span class="hljs-keyword">for</span> <span class="hljs-selector-tag">i</span> <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..&lt;subnetworks<span class="hljs-selector-class">.count</span> {
+        let subnetwork = subnetworks[i]
+        print(<span class="hljs-string">"Subnetwork \(i + 1):\n\(subnetwork.description)\n"</span>)
+    }
+}
+</code></pre><h2 id="installation">Installation</h2>
+<p>After you download the repository, open the .xcodeproj file in Xcode. Build the project. It will copy the headers to /usr/local/include and install the library in /usr/local/lib.</p>
+<h2 id="linking-with-existing-projects">Linking with existing projects</h2>
+<p>Add /usr/local/lib to your target&#39;s library search paths and /usr/local/include to the header search paths:
+<img src="https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-search-paths.png" alt="enter image description here"></p>
+<p>Then add <code>#include &lt;NetworkCalculator/NetworkCalculator.h&gt;</code> directive at the top of the file you want to use the library&#39;s functions in. To use the library in a Swift project, add the same directive to the bridging header file and perform one extra step, which consists of copying <a href="https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/NetworkCalculator.swift">NetworkCalculator.swift</a> into your project.</p>
+<p>Finally, add libNetworkCalculator.dylib to your target&#39;s dependency list:
+<img src="https://raw.githubusercontent.com/Tymur77/NetworkCalculator/master/images/add-dependency.png" alt="enter image description here" style="width: 650px"></p>
                 </div>
             </div>
         </div>

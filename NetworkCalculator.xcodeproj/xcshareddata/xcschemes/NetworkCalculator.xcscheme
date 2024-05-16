@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "cp &quot;${CODESIGNING_FOLDER_PATH}&quot; &quot;/usr/local/lib/&quot;&#10;cp -r &quot;${SRCROOT}/NetworkCalculator&quot; &quot;/usr/local/include/NetworkCalculator&quot;&#10;">
+               scriptText = "cp &quot;${CODESIGNING_FOLDER_PATH}&quot; &quot;/usr/local/lib/&quot;&#10;&#10;include=&quot;/usr/local/include&quot;&#10;headers_dir=&quot;$include/NetworkCalculator&quot;&#10;if [ ! -d &quot;$headers_dir&quot; ]; then&#10;    mkdir &quot;$headers_dir&quot;&#10;fi&#10;cp -r &quot;${SRCROOT}/NetworkCalculator&quot; &quot;$include&quot;&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"

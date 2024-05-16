@@ -1,6 +1,8 @@
 #ifndef representation_h
 #define representation_h
 
+#include <Foundation/Foundation.h>
+#include "datatypes.h"
 
 /*!
  @header Repserenting IP addresses
@@ -17,7 +19,7 @@
  @result Returns a pointer to a C-style string, representing the ip address.
  @attributeblock Memory After you are done using the string, call free.
  */
-char *stringIPAddress(IPAddress address);
+char *stringIPAddress(IPAddress address) NS_REFINED_FOR_SWIFT;
 
 
 /*!
@@ -27,7 +29,7 @@ char *stringIPAddress(IPAddress address);
  @result Returns a pointer to a C-style string, representing the ip address.
  @attributeblock Memory After you are done using the string, call free.
  */
-char *binaryIPAddress(IPAddress address);
+char *binaryIPAddress(IPAddress address) NS_REFINED_FOR_SWIFT;
 
 
 #endif /* representation_h */
