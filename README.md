@@ -63,7 +63,7 @@ decimal mask: 255.255.255.192
 192.168.0.190
 ```
 In Swift:
-```
+```Swift
 let ntwk = Network(address: "192.168.0.1", mask: 24)!
 print("Parent network:\n\(ntwk.description)\n")
 if let subnetworks = ntwk.subnetworks(hosts: [50, 100]) {
