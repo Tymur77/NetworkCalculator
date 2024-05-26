@@ -2,16 +2,16 @@ import Foundation
 
 
 class IPAddress {
-    private var inner: __IPAddress
+    private var inner: [UInt8]
     static var zero: IPAddress { IPAddress(parts: [0,0,0,0])! }
     
     init?(parts: [UInt8]) {
         guard parts.count == 4 else { return nil }
-        self.inner = (parts[0], parts[1], parts[2], parts[3])
+        self.inner = parts
     }
     
     init?(string: String) {
-        self.inner = (0,0,0,0)
+        self.inner = [0,0,0,0]
         let result = self.withUInt8Pointer { pointer in
             string.withCString { __IPAddressFromString(pointer, $0) }
         }
@@ -23,13 +23,13 @@ class IPAddress {
     }
     
     var string: String {
-        let str = __stringIPAddress(&self.inner.0)!
+        let str = self.withUInt8Pointer { __stringIPAddress($0)! }
         defer { str.deallocate() }
         return String(cString: str)
     }
     
     var binary: String {
-        let str = __binaryIPAddress(&self.inner.0)!
+        let str = self.withUInt8Pointer { __binaryIPAddress($0)! }
         defer { str.deallocate() }
         return String(cString: str)
     }
@@ -37,12 +37,12 @@ class IPAddress {
     func withUInt8Pointer<Result>(_ body: (UnsafeMutablePointer<UInt8>) throws -> Result)
     rethrows -> Result
     {
-        return try body(&self.inner.0)
+        return try body(&self.inner)
     }
     
-    subscript(offset: Int) -> UInt8 {
-        get { self.withUInt8Pointer { $0.advanced(by: offset).pointee } }
-        set { self.withUInt8Pointer { $0.advanced(by: offset).pointee = newValue } }
+    subscript(index: Int) -> UInt8 {
+        get { self.inner[index] }
+        set { self.inner[index] = newValue }
     }
 }
 
@@ -98,7 +98,7 @@ class Network {
         var zeroed = hosts + [0]
         guard let subnetworks = __CreateSubnetworks(self.inner, &zeroed) else { return nil }
         defer { subnetworks.deallocate() }
-        return (0..<hosts.count).map { Network(inner: subnetworks.advanced(by: $0).pointee!) }
+        return (0..<hosts.count).map { Network(inner: subnetworks[$0]!) }
     }
     
     var firstAddress: IPAddress {
